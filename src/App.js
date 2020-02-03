@@ -14,18 +14,9 @@ import {
 
 function App() {
   return (
-    <Router>
       <div>
-      <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/twitter">
-          <Twitter />
-        </Route>
-      </Switch>
+        <Login />
       </div>
-    </Router>
   )
 }
 
