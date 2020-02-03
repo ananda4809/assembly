@@ -34,16 +34,21 @@ class Login extends Component{
         let value = this.state.enteredEmail;
         fetch("https://3rcgspaw20.execute-api.ap-south-1.amazonaws.com/dev", {
             method: 'post',
-            headers: {'Content-Type':'application/json'},
+            headers: {
+                'Content-Type':'application/json',
+                'Access-Control-Allow-Origin':'*'
+            },
             body: JSON.stringify({
                 "email": value
             })
         })
         .then(res => res.json())
-        .then(result => this.setState({modalBodyMessage : result}, console.log(result)));
-        this.setState({
-            modal: !this.state.modal
-            });
+        .then(result => this.setState({modalBodyMessage : result[0]}, console.log(result)))
+        .then(
+            this.setState({
+                modal: !this.state.modal
+                })
+        )
     }
     
     toggle = () => {
